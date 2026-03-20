@@ -1,5 +1,4 @@
-package kubernetes.deployment
-
+package main
 deny[msg] {
   input.kind == "Deployment"
   input.spec.strategy.type != "RollingUpdate"
