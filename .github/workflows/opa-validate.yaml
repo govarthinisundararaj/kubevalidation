@@ -1,0 +1,22 @@
+name: Kubernetes Policy Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Run OPA via Conftest (Marketplace Action)
+      - name: Run OPA Policy Checks
+        uses: instrumenta/conftest-action@v0.3.0
+        with:
+          files: k8s/
+          policy: policy/
